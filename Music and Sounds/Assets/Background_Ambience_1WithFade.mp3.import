@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Background_Ambience_1WithFade.mp3-ce54e0fdd3f7cec19aa83d3ef20c2b5e.mp3str"
+
+[deps]
+
+source_file="res://Music and Sounds/Assets/Background_Ambience_1WithFade.mp3"
+dest_files=[ "res://.import/Background_Ambience_1WithFade.mp3-ce54e0fdd3f7cec19aa83d3ef20c2b5e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

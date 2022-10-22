@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/The_Feet.wav-6e5fb01988c0bde471cb134d3c90b9ea.sample"
+
+[deps]
+
+source_file="res://Music and Sounds/Assets/The_Feet.wav"
+dest_files=[ "res://.import/The_Feet.wav-6e5fb01988c0bde471cb134d3c90b9ea.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

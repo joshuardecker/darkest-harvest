@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Ghost_Jam_Theme_Mastered.mp3-1cff4de59fe51aedbf68bab4e1fe3d60.mp3str"
+
+[deps]
+
+source_file="res://Music and Sounds/Assets/Ghost_Jam_Theme_Mastered.mp3"
+dest_files=[ "res://.import/Ghost_Jam_Theme_Mastered.mp3-1cff4de59fe51aedbf68bab4e1fe3d60.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

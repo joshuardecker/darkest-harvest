@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://World/Assets/jacko_crow_2.png" type="Texture" id=1]
+[ext_resource path="res://World/Assets/jacko_crow_1.png" type="Texture" id=2]
+[ext_resource path="res://World/Assets/light.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "crow",
+"speed": 1.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 1, 5.5 )
+
+[node name="Jacko-Crow" type="StaticBody2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -15 )
+frames = SubResource( 1 )
+animation = "crow"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -5.5 )
+shape = SubResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, -24 )
+texture = ExtResource( 3 )
+texture_scale = 0.2
+color = Color( 0.992157, 0.709804, 0.223529, 1 )
+energy = 0.8
