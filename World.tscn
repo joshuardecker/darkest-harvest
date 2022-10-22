@@ -1,9 +1,10 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://World/Game/GrassTile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Assets/PathTile.png" type="Texture" id=2]
 [ext_resource path="res://World/Assets/BrickTile.png" type="Texture" id=3]
 [ext_resource path="res://Player/Game/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/Game/Ghost.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/Assets/CliffTile.png" type="Texture" id=7]
 [ext_resource path="res://HUD/Assets/shotgun.png" type="Texture" id=9]
 [ext_resource path="res://HUD/Assets/Halloween.ttf" type="DynamicFontData" id=11]
@@ -3608,6 +3609,15 @@ texture = ExtResource( 28 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 157, 97 )
+
+[node name="Ghost" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 284, 170 )
+
+[node name="Ghost3" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 303, 104 )
+
+[node name="Ghost2" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 179, 190 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.2, 0.0705882, 0.0705882, 1 )
