@@ -41,7 +41,7 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "reallyDead"
+"method": "Reset"
 } ]
 }
 
@@ -360,7 +360,7 @@ states/Shoot/node = SubResource( 31 )
 states/Shoot/position = Vector2( 518, 123.399 )
 transitions = [ "Idle", "Run", SubResource( 32 ), "Run", "Idle", SubResource( 33 ), "Idle", "Shoot", SubResource( 34 ), "Shoot", "Idle", SubResource( 35 ), "Idle", "Death", SubResource( 40 ), "Death", "Idle", SubResource( 41 ) ]
 start_node = "Idle"
-graph_offset = Vector2( 0, 81.3993 )
+graph_offset = Vector2( 0, 88.9833 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=21]
 
@@ -368,7 +368,7 @@ graph_offset = Vector2( 0, 81.3993 )
 extents = Vector2( 7.5, 9 )
 
 [sub_resource type="RectangleShape2D" id=36]
-extents = Vector2( 7.5, 9.5 )
+extents = Vector2( 9, 13.7 )
 
 [sub_resource type="RectangleShape2D" id=42]
 extents = Vector2( 11, 18.5 )
@@ -401,6 +401,7 @@ limit_smoothed = true
 smoothing_enabled = true
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1.5, 1.5, 1, 1 )
 position = Vector2( 0.400002, -15.6 )
 texture = ExtResource( 2 )
 hframes = 76
@@ -444,6 +445,11 @@ one_shot = true
 [node name="ShootTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="WaveTimer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
 [node name="ItemHurtBox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 16
@@ -458,7 +464,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2( -0.5, 1.5 )
+position = Vector2( -0.400002, -2.7 )
 shape = SubResource( 36 )
 
 [node name="AlterBox" type="Area2D" parent="."]
@@ -521,3 +527,6 @@ volume_db = -20.0
 
 [node name="BulletSpawn" type="Node2D" parent="."]
 position = Vector2( 0, -15 )
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
+[connection signal="timeout" from="WaveTimer" to="." method="_on_WaveTimer_timeout"]

@@ -6,17 +6,35 @@ public class Player : KinematicBody2D
 	
 	private static Node _animationTree;
 	private static AnimationNodeStateMachinePlayback _animationState;
+	private static States _playerState;     // The state the player is in, ex: "Dead" or "Move". Used in the main physics loop.
+	private static Vector2 _playerVelocity; // The velocity of the player.
+	private static PackedScene _bullet; // The bullet scene thats used to create bullets when shooting.
+	private const float _BULLET_PUSHBACK = -70; // How much the bullet pushes you when the player shoots.
+	private const float _DEFAULT_SPEED = 50; // The max speed of the player.
+	private const float _ACCELERATION = 140; // Rate of acceleration the player uses.
+	private const float _FRICTION = 240;     // Rate of friction the player uses.
+	private Vector2 _spawnpoint; // Where does the player re-spawn?
+
+	// ****
+	// ****
+	// Public Variables of the player:
+
+	public static uint Health { get; set; } // Health of the player?
+	public static uint Souls { get; set; } // How many souls does the player have?
+	public static float Damage { get; set; } // How much damage does the player do?
+	public static int WaveNum { get; set; } // Current wave
+	public static bool Reloading { get; set; } // Is the player reloading?
+
+	// Public Variables of the player:
+	// ****
+	// ****
 	
 	private enum States 
 	{
 		Move,
 		Shooting,
-		Dying,
-		Dead
+		Dying
 	}
-
-	private static States _playerState;     // The state the player is in, ex: "Dead" or "Move". Used in the main physics loop.
-	private static Vector2 _playerVelocity; // The velocity of the player.
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -29,6 +47,14 @@ public class Player : KinematicBody2D
 		_playerVelocity = Vector2.Zero;
 		
 		_bullet = ResourceLoader.Load<PackedScene>("res://Player/Game/Bullet.tscn");
+
+		_spawnpoint = GlobalPosition;
+
+		Health = 5;
+		Souls = 0;
+		Damage = 1;
+
+		Reloading = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,6 +65,12 @@ public class Player : KinematicBody2D
 			
 			_playerState = States.Shooting;
 		}
+
+		if (Health == 0 && _playerState != States.Dying)
+		{
+			_playerState = States.Dying;
+			Death();
+		}
 		
 		switch (_playerState)
 		{
@@ -48,13 +80,13 @@ public class Player : KinematicBody2D
 
 			case States.Shooting:
 				Shoot(delta);
+
+				break;
+
+			case States.Dying:
 				break;
 		}
 	}
-
-	private const float _DEFAULT_SPEED = 50; // The max speed of the player.
-	private const float _ACCELERATION = 140; // Rate of acceleration the player uses.
-	private const float _FRICTION = 240;     // Rate of friction the player uses.
 	
 	// Moves the player with the given delta value.
 	private void MovePlayer(float delta)
@@ -115,12 +147,11 @@ public class Player : KinematicBody2D
 		}
 	}
 
-	private static PackedScene _bullet;
-	private const float _BULLET_PUSHBACK = -70;
-
 	private void Shoot(float delta)
 	{
 
+		Reloading = true;
+		
 		GetNode<Timer>("ShootTimer").Start(2.0f);
 
 		ShootSound();
@@ -158,8 +189,46 @@ public class Player : KinematicBody2D
 		GetNode<AudioStreamPlayer>("Shotgun").Play();
 	}
 
+	private void _on_ShootTimer_timeout()
+	{
+		Reloading = false;
+	}
+
 	private void Death()
 	{
 		GetNode<AudioStreamPlayer>("DeathSound").Play();
+
+		MoveAndSlide(new Vector2(0, 0));
+
+		_animationState.Travel("Death");
+	}
+
+	public void Reset()
+	{
+		Health = 5;
+		Souls = 0;
+		Damage = 1.0f;
+
+		GlobalPosition = _spawnpoint;
+
+		_playerState = States.Move;
+
+		WaveNum = -1;
+
+		_on_WaveTimer_timeout();
+	}
+
+	private void _on_WaveTimer_timeout()
+	{
+		WaveNum += 1;
+		
+		NextWave();
+
+		GetNode<Timer>("WaveTimer").Start(20.0f);
+	}
+
+	private void NextWave()
+	{
+
 	}
 }
