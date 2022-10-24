@@ -22,8 +22,9 @@ public class Player : KinematicBody2D
 	public static uint Health { get; set; } // Health of the player?
 	public static uint Souls { get; set; } // How many souls does the player have?
 	public static float Damage { get; set; } // How much damage does the player do?
-	public static int WaveNum { get; set; } // Current wave
+	public static uint WaveNum { get; set; } // Current wave
 	public static bool Reloading { get; set; } // Is the player reloading?
+	public static Vector2 PlayerPosition { get; set; } // Where is the player.
 
 	// Public Variables of the player:
 	// ****
@@ -55,6 +56,8 @@ public class Player : KinematicBody2D
 		Damage = 1;
 
 		Reloading = false;
+
+		PlayerPosition = GlobalPosition;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -86,6 +89,8 @@ public class Player : KinematicBody2D
 			case States.Dying:
 				break;
 		}
+
+		PlayerPosition = GlobalPosition;
 	}
 	
 	// Moves the player with the given delta value.
@@ -213,22 +218,15 @@ public class Player : KinematicBody2D
 
 		_playerState = States.Move;
 
-		WaveNum = -1;
+		WaveNum = 0;
 
-		_on_WaveTimer_timeout();
+		GetNode<Timer>("WaveTimer").Start(20.0f);
 	}
 
 	private void _on_WaveTimer_timeout()
 	{
 		WaveNum += 1;
-		
-		NextWave();
 
-		GetNode<Timer>("WaveTimer").Start(20.0f);
-	}
-
-	private void NextWave()
-	{
-		
+		GetNode<Timer>("WaveTimer").Start(5.0f);
 	}
 }
