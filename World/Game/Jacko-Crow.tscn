@@ -21,15 +21,24 @@ extents = Vector2( 1, 5.5 )
 position = Vector2( 0, -15 )
 frames = SubResource( 1 )
 animation = "crow"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -5.5 )
 shape = SubResource( 2 )
 
-[node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 0, -24 )
+[node name="AreaLight" type="Light2D" parent="."]
+position = Vector2( 0, -5 )
 texture = ExtResource( 3 )
 texture_scale = 0.2
 color = Color( 0.992157, 0.709804, 0.223529, 1 )
 energy = 0.8
+
+[node name="HeadLight" type="Light2D" parent="."]
+position = Vector2( -4.76837e-07, -24 )
+scale = Vector2( 0.256836, 0.261719 )
+texture = ExtResource( 3 )
+texture_scale = 0.2
+color = Color( 0.992157, 0.709804, 0.223529, 1 )
+energy = 0.7

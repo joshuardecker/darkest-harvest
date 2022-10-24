@@ -229,6 +229,6 @@ public class Player : KinematicBody2D
 
 	private void NextWave()
 	{
-
+		
 	}
 }
