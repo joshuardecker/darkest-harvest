@@ -227,6 +227,6 @@ public class Player : KinematicBody2D
 	{
 		WaveNum += 1;
 
-		GetNode<Timer>("WaveTimer").Start(5.0f);
+		GetNode<Timer>("WaveTimer").Start(20.0f);
 	}
 }

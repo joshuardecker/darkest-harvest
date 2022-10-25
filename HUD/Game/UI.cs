@@ -101,5 +101,13 @@ public class UI : Control
 
         // Reloading:
         // ****
+
+        // ****
+        // Souls:
+
+        GetNode<Label>("SoulsText").Text = Player.Souls.ToString();
+
+        // Souls:
+        // ****
     }
 }

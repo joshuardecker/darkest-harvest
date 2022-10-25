@@ -1,10 +1,11 @@
 using Godot;
 using System;
 
-public class Spawner : Node2D
+public class Spawner : YSort
 {
     private uint _wave;
-    private const float _MAX_DISTANCE = 100.0f;
+    private const float _MAX_DISTANCE = 700.0f;
+    private const float _MIN_DISTANCE = 100.0f;
     private static PackedScene _ghost = ResourceLoader.Load<PackedScene>("res://Enemies/Game/Ghost.tscn");
 
     // Called when the node enters the scene tree for the first time.
@@ -37,7 +38,9 @@ public class Spawner : Node2D
             return;
         }
         
-        if (GlobalPosition.DistanceTo(Player.PlayerPosition) <= _MAX_DISTANCE)
+        float playerDis = GlobalPosition.DistanceTo(Player.PlayerPosition);
+        
+        if (playerDis >= _MIN_DISTANCE && playerDis <= _MAX_DISTANCE)
         {
             var ghost = _ghost.Instance();
 

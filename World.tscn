@@ -4,7 +4,7 @@
 [ext_resource path="res://World/Assets/PathTile.png" type="Texture" id=2]
 [ext_resource path="res://World/Assets/BrickTile.png" type="Texture" id=3]
 [ext_resource path="res://Player/Game/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Enemies/Game/Ghost.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/Game/Totem.tscn" type="PackedScene" id=5]
 [ext_resource path="res://HUD/Game/UI.cs" type="Script" id=6]
 [ext_resource path="res://World/Assets/CliffTile.png" type="Texture" id=7]
 [ext_resource path="res://Enemies/Game/Spawner.tscn" type="PackedScene" id=8]
@@ -561,7 +561,6 @@ tile_data = PoolIntArray( -1572822, 0, 0, -1572821, 0, 1, -1572820, 0, 1, -15728
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Grasses" type="YSort" parent="YSort"]
-visible = false
 
 [node name="Grass1" parent="YSort/Grasses" instance=ExtResource( 13 )]
 position = Vector2( 33, 94 )
@@ -3084,6 +3083,7 @@ position = Vector2( -973, 144 )
 position = Vector2( -829, 317 )
 
 [node name="Crows" type="YSort" parent="YSort"]
+visible = false
 
 [node name="Jacko-Crow" parent="YSort/Crows" instance=ExtResource( 16 )]
 position = Vector2( -330, 213 )
@@ -3116,6 +3116,7 @@ position = Vector2( -294, -182 )
 position = Vector2( 529, -269 )
 
 [node name="Pebbles" type="YSort" parent="YSort"]
+visible = false
 
 [node name="Pebble6" parent="YSort/Pebbles" instance=ExtResource( 12 )]
 position = Vector2( -69, 413 )
@@ -3615,20 +3616,75 @@ texture = ExtResource( 28 )
 [node name="Player" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 419, 184 )
 
-[node name="Ghost" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 284, 170 )
+[node name="Spawners" type="YSort" parent="YSort"]
 
-[node name="Ghost3" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 303, 104 )
+[node name="Spawner" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( -354, 175 )
 
-[node name="Ghost2" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 179, 190 )
+[node name="Spawner2" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( -200, -159 )
+
+[node name="Spawner3" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( 163, -36 )
+
+[node name="Spawner4" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( 606, -38 )
+
+[node name="Spawner5" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( 512, -258 )
+
+[node name="Spawner6" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( 1083, -122 )
+
+[node name="Spawner7" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( 1155, 272 )
+
+[node name="Spawner8" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( 578, 370 )
+
+[node name="Spawner9" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( -62, 404 )
+
+[node name="Spawner10" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( -724, 276 )
+
+[node name="Spawner11" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( -1396, 795 )
+
+[node name="Spawner12" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( -1999, 652 )
+
+[node name="Spawner13" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( -1684, 197 )
+
+[node name="Spawner14" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( -1405, 341 )
+
+[node name="Spawner15" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( 1589, 159 )
+
+[node name="Spawner16" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( 2185, 82 )
+
+[node name="Spawner17" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( 2521, -216 )
+
+[node name="Spawner18" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( 1788, -193 )
+
+[node name="Spawner19" parent="YSort/Spawners" instance=ExtResource( 8 )]
+position = Vector2( 2030, -328 )
+
+[node name="Totem" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( -41, 294 )
+WaveDestroyed = 11
+
+[node name="Totem2" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 645, 147 )
+WaveDestroyed = 1
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.317647, 0.0745098, 0.0745098, 1 )
-
-[node name="Spawner" parent="CanvasModulate" instance=ExtResource( 8 )]
-position = Vector2( 401, 211 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -3701,13 +3757,13 @@ rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 19 )
 
 [node name="SoulsText" type="Label" parent="CanvasLayer/UI"]
-margin_left = 10.0
+margin_left = 9.0
 margin_top = 26.0
-margin_right = 50.0
+margin_right = 23.0
 margin_bottom = 46.0
 rect_scale = Vector2( 0.7, 0.7 )
 custom_fonts/font = SubResource( 102 )
-text = "0 / 0"
+text = "0"
 align = 1
 valign = 1
 

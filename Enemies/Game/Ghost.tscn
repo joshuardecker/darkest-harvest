@@ -90,7 +90,7 @@ radius = 7.0
 height = 8.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 86.093
+radius = 271.007
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 8.5, 13.5 )
