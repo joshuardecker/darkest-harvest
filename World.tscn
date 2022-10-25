@@ -3675,13 +3675,67 @@ position = Vector2( 1788, -193 )
 [node name="Spawner19" parent="YSort/Spawners" instance=ExtResource( 8 )]
 position = Vector2( 2030, -328 )
 
-[node name="Totem" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( -41, 294 )
-WaveDestroyed = 11
+[node name="Totems" type="YSort" parent="YSort"]
 
-[node name="Totem2" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 645, 147 )
-WaveDestroyed = 1
+[node name="Totem" parent="YSort/Totems" instance=ExtResource( 5 )]
+position = Vector2( -530, 382 )
+WaveDestroyed = 12
+Health = 4.0
+
+[node name="Totem2" parent="YSort/Totems" instance=ExtResource( 5 )]
+position = Vector2( -530, 357 )
+WaveDestroyed = 12
+Health = 4.0
+
+[node name="Totem3" parent="YSort/Totems" instance=ExtResource( 5 )]
+position = Vector2( -530, 332 )
+WaveDestroyed = 12
+Health = 4.0
+
+[node name="Totem4" parent="YSort/Totems" instance=ExtResource( 5 )]
+position = Vector2( -530, 307 )
+WaveDestroyed = 12
+Health = 4.0
+
+[node name="Totem5" parent="YSort/Totems" instance=ExtResource( 5 )]
+position = Vector2( -530, 283 )
+WaveDestroyed = 12
+Health = 4.0
+
+[node name="Totem6" parent="YSort/Totems" instance=ExtResource( 5 )]
+position = Vector2( -530, 261 )
+WaveDestroyed = 12
+Health = 4.0
+
+[node name="Totem7" parent="YSort/Totems" instance=ExtResource( 5 )]
+position = Vector2( 1390, 63 )
+WaveDestroyed = 6
+Health = 2.0
+
+[node name="Totem8" parent="YSort/Totems" instance=ExtResource( 5 )]
+position = Vector2( 1390, 37 )
+WaveDestroyed = 6
+Health = 2.0
+
+[node name="Totem9" parent="YSort/Totems" instance=ExtResource( 5 )]
+position = Vector2( 1390, 12 )
+WaveDestroyed = 6
+Health = 2.0
+
+[node name="Totem10" parent="YSort/Totems" instance=ExtResource( 5 )]
+position = Vector2( 1390, -14 )
+WaveDestroyed = 6
+Health = 2.0
+
+[node name="Totem11" parent="YSort/Totems" instance=ExtResource( 5 )]
+position = Vector2( 1390, -37 )
+WaveDestroyed = 6
+Health = 2.0
+
+[node name="Totem12" parent="YSort/Totems" instance=ExtResource( 5 )]
+position = Vector2( 1390, -58 )
+WaveDestroyed = 6
+Health = 2.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.317647, 0.0745098, 0.0745098, 1 )
