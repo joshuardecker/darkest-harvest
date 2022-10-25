@@ -75,6 +75,8 @@ public class Ghost : KinematicBody2D
         GetNode<AudioStreamPlayer2D>("DeathSound").Play();
 
         GetNode<Timer>("DeathTimer").Start(3.0f);
+
+        Player.Souls += 1;
     }
 
     public void DeleteSprite()

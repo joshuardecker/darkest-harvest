@@ -33,6 +33,7 @@ public class Player : KinematicBody2D
 	private enum States 
 	{
 		Move,
+		Shoot,
 		Shooting,
 		Dying
 	}
@@ -63,10 +64,10 @@ public class Player : KinematicBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(float delta)
 	{
-		if (Input.IsMouseButtonPressed(1) && GetNode<Timer>("ShootTimer").IsStopped())
+		if (Input.IsMouseButtonPressed(1) && !Reloading)
 		{
 			
-			_playerState = States.Shooting;
+			_playerState = States.Shoot;
 		}
 
 		if (Health == 0 && _playerState != States.Dying)
@@ -81,9 +82,13 @@ public class Player : KinematicBody2D
 				MovePlayer(delta);
 				break;
 
-			case States.Shooting:
+			case States.Shoot:
 				Shoot(delta);
 
+				break;
+			
+			case States.Shooting:
+				MoveAndSlide(_playerVelocity);
 				break;
 
 			case States.Dying:
@@ -186,7 +191,10 @@ public class Player : KinematicBody2D
 
 		MoveAndSlide(_playerVelocity);
 
-		_playerState = States.Move;
+		// The shooting state is a time when only the shooting animation can be played,
+		// so the player actually sees the shot.
+		_playerState = States.Shooting;
+		GetNode<Timer>("ShootStateTimer").Start(0.1f);
 	}
 
 	private void ShootSound()
@@ -194,9 +202,16 @@ public class Player : KinematicBody2D
 		GetNode<AudioStreamPlayer>("Shotgun").Play();
 	}
 
+	// When the reload timer finishes.
 	private void _on_ShootTimer_timeout()
 	{
 		Reloading = false;
+	}
+
+	// When the ShootState timer finishes, aka when the player can switch to the move state after shooting.
+	private void _on_ShootStateTimer_timeout()
+	{
+		_playerState = States.Move;
 	}
 
 	private void Death()
