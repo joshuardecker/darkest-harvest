@@ -96,12 +96,11 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=5]
-radius = 6.5
-height = 17.0
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 6, 9.5 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 7, 14 )
+extents = Vector2( 7, 13.5 )
 
 [node name="Totem" type="StaticBody2D"]
 script = ExtResource( 2 )
@@ -118,8 +117,8 @@ anims/Idle = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1, -14 )
-shape = SubResource( 5 )
+position = Vector2( 1, -8.5 )
+shape = SubResource( 7 )
 
 [node name="AreaLight" type="Light2D" parent="."]
 position = Vector2( 1, -4 )
@@ -137,11 +136,12 @@ color = Color( 0.992157, 0.709804, 0.223529, 1 )
 energy = 0.7
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 1, -15 )
+position = Vector2( 1, -14.5 )
 shape = SubResource( 6 )
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

@@ -21,6 +21,9 @@ public class Alter : StaticBody2D
             GetNode<Label>("CostLabel").Text = GetSoulsCost().ToString() + " Souls";
 
             GetNode<AnimationPlayer>("AnimationPlayer").Play("Use");
+
+            // Reset the players health to heal them.
+            Player.Health = 5;
         }
     }
 

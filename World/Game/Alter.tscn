@@ -86,14 +86,16 @@ position = Vector2( 0, -6 )
 shape = SubResource( 5 )
 
 [node name="CostLabel" type="Label" parent="."]
-margin_left = -20.0
-margin_top = -45.0
-margin_right = 38.0
-margin_bottom = -25.0
+margin_left = -49.0
+margin_top = -41.0
+margin_right = 91.0
+margin_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_scale = Vector2( 0.7, 0.7 )
 custom_fonts/font = SubResource( 6 )
-text = "25 Souls"
+text = "25 souls to upgrade"
+align = 1
+valign = 1
 
 [connection signal="area_entered" from="AlterBox" to="." method="_on_AlterBox_area_entered"]

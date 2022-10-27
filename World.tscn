@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=2]
+[gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://World/Game/GrassTile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Assets/PathTile.png" type="Texture" id=2]
@@ -527,6 +527,9 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
+
+[sub_resource type="DynamicFont" id=104]
+font_data = ExtResource( 11 )
 
 [sub_resource type="DynamicFont" id=101]
 font_data = ExtResource( 11 )
@@ -2013,7 +2016,7 @@ position = Vector2( 1319, 376 )
 position = Vector2( 443, 85 )
 
 [node name="Grass484" parent="YSort/Grasses" instance=ExtResource( 13 )]
-position = Vector2( 495, 106 )
+position = Vector2( 492, 107 )
 
 [node name="Grass485" parent="YSort/Grasses" instance=ExtResource( 13 )]
 position = Vector2( 427, 34 )
@@ -3084,7 +3087,6 @@ position = Vector2( -973, 144 )
 position = Vector2( -829, 317 )
 
 [node name="Crows" type="YSort" parent="YSort"]
-visible = false
 
 [node name="Jacko-Crow" parent="YSort/Crows" instance=ExtResource( 16 )]
 position = Vector2( -330, 213 )
@@ -3117,7 +3119,6 @@ position = Vector2( -294, -182 )
 position = Vector2( 529, -269 )
 
 [node name="Pebbles" type="YSort" parent="YSort"]
-visible = false
 
 [node name="Pebble6" parent="YSort/Pebbles" instance=ExtResource( 12 )]
 position = Vector2( -69, 413 )
@@ -3614,9 +3615,6 @@ texture = ExtResource( 28 )
 position = Vector2( -1916, 188 )
 texture = ExtResource( 28 )
 
-[node name="Player" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 422, 233 )
-
 [node name="Spawners" type="YSort" parent="YSort"]
 
 [node name="Spawner" parent="YSort/Spawners" instance=ExtResource( 8 )]
@@ -3684,27 +3682,27 @@ WaveDestroyed = 12
 Health = 4.0
 
 [node name="Totem2" parent="YSort/Totems" instance=ExtResource( 5 )]
-position = Vector2( -530, 357 )
+position = Vector2( -530, 363 )
 WaveDestroyed = 12
 Health = 4.0
 
 [node name="Totem3" parent="YSort/Totems" instance=ExtResource( 5 )]
-position = Vector2( -530, 332 )
+position = Vector2( -530, 344 )
 WaveDestroyed = 12
 Health = 4.0
 
 [node name="Totem4" parent="YSort/Totems" instance=ExtResource( 5 )]
-position = Vector2( -530, 307 )
+position = Vector2( -530, 287 )
 WaveDestroyed = 12
 Health = 4.0
 
 [node name="Totem5" parent="YSort/Totems" instance=ExtResource( 5 )]
-position = Vector2( -530, 283 )
+position = Vector2( -530, 306 )
 WaveDestroyed = 12
 Health = 4.0
 
 [node name="Totem6" parent="YSort/Totems" instance=ExtResource( 5 )]
-position = Vector2( -530, 261 )
+position = Vector2( -530, 325 )
 WaveDestroyed = 12
 Health = 4.0
 
@@ -3714,36 +3712,63 @@ WaveDestroyed = 6
 Health = 2.0
 
 [node name="Totem8" parent="YSort/Totems" instance=ExtResource( 5 )]
-position = Vector2( 1390, 37 )
+position = Vector2( 1390, 44 )
 WaveDestroyed = 6
 Health = 2.0
 
 [node name="Totem9" parent="YSort/Totems" instance=ExtResource( 5 )]
-position = Vector2( 1390, 12 )
+position = Vector2( 1390, 6 )
 WaveDestroyed = 6
 Health = 2.0
 
 [node name="Totem10" parent="YSort/Totems" instance=ExtResource( 5 )]
-position = Vector2( 1390, -14 )
+position = Vector2( 1390, -13 )
 WaveDestroyed = 6
 Health = 2.0
 
 [node name="Totem11" parent="YSort/Totems" instance=ExtResource( 5 )]
-position = Vector2( 1390, -37 )
+position = Vector2( 1390, 25 )
 WaveDestroyed = 6
 Health = 2.0
 
 [node name="Totem12" parent="YSort/Totems" instance=ExtResource( 5 )]
-position = Vector2( 1390, -58 )
+position = Vector2( 1390, -32 )
 WaveDestroyed = 6
 Health = 2.0
 
-[node name="Totem" parent="YSort" instance=ExtResource( 5 )]
+[node name="Totem13" parent="YSort/Totems" instance=ExtResource( 5 )]
+position = Vector2( -530, 268 )
+WaveDestroyed = 12
+Health = 4.0
+
+[node name="Totem14" parent="YSort/Totems" instance=ExtResource( 5 )]
+position = Vector2( 1390, -51 )
+WaveDestroyed = 6
+Health = 2.0
+
+[node name="SpawnTotem" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 406, 182 )
 WaveDestroyed = 1
 
+[node name="Label" type="Label" parent="YSort/SpawnTotem"]
+margin_left = -25.0
+margin_top = -49.0
+margin_right = 104.0
+margin_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = SubResource( 104 )
+text = "When my light goes
+out, shoot me!"
+align = 1
+valign = 1
+
 [node name="Alter" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( 296, 210 )
+position = Vector2( -1827, 396 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 422, 233 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.317647, 0.0745098, 0.0745098, 1 )

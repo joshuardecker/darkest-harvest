@@ -22,7 +22,7 @@ public class Ghost : KinematicBody2D
 
         GetNode<MovementEngine>("MovementEngine").SetWanderStats(GlobalPosition, WANDER_DISTANCE);
 
-        _health = 3;
+        _health = 2 + (Player.WaveNum * 0.1f); // Goes up 1 health every 10 waves.
 
         _alive = true;
     }
@@ -67,6 +67,7 @@ public class Ghost : KinematicBody2D
         GetNode<Area2D>("Hurtbox").QueueFree();
         GetNode<Area2D>("Hitbox").QueueFree();
         GetNode<CollisionShape2D>("CollisionShape2D").QueueFree();
+        GetNode<Light2D>("Light2D").Energy = 0.3f;
 
         GetNode<MovementEngine>("MovementEngine").SetStateIdle();
 
@@ -82,6 +83,7 @@ public class Ghost : KinematicBody2D
     public void DeleteSprite()
     {
         GetNode<Sprite>("Sprite").QueueFree();
+        GetNode<Light2D>("Light2D").Hide();
     }
     
     public void _on_DeathTimer_timeout()
@@ -91,9 +93,7 @@ public class Ghost : KinematicBody2D
 
     // When the ghost hits the player.
     private void _on_Hurtbox_area_entered(Area2D area)
-    {
-        GD.Print("Test");
-        
+    {   
         Player.Health -= 1;
 
         Dying();
